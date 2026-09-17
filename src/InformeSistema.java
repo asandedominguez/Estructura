@@ -21,8 +21,8 @@ public class InformeSistema {
     }
 
     public static long mUso() {
-        long uso = mTotal() - mLibre() / (1024 * 1024);
-        return uso;
+        long usoBytes = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        return usoBytes / (1024 * 1024);
     }
 
     public static long mPorcentaje() {
@@ -31,6 +31,20 @@ public class InformeSistema {
         long porcentaje = (uso * 100) / total;
         return porcentaje;
     }
+
+    public static long actualizaciones() {
+        long uso = mUso();
+
+        long[] reservado = new long[8 * 1024 * 1024];
+        if (reservado.length > 0) {
+            reservado[0] = 1;
+        }
+
+        long usoFinal = mUso();
+        return usoFinal - uso;
+    }
+
+
 
     public static void main (String[] args) {
         System.out.println("PROCESADORES " +
@@ -43,7 +57,11 @@ public class InformeSistema {
                 "\n Libre: " + InformeSistema.mLibre() +
                 "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
                 "\n Máxima (-Xmx): " + InformeSistema.max() +
-                "\n \n MEMORIA DESPUÉS DE RESERVAR 64 MIB"
+                "\n \n MEMORIA DESPUÉS DE RESERVAR 64 MIB" + "\n " +
+                "\n Total reservada " + InformeSistema.actualizaciones() +
+                "\n Libre: " + InformeSistema.mLibre() +
+                "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
+                "\n Máxima (-Xmx): " + InformeSistema.max()
         );
 
     }
