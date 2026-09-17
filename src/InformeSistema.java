@@ -44,6 +44,11 @@ public class InformeSistema {
         return usoFinal - uso;
     }
 
+    public static String sOperativo() {
+        String sistema = System.getProperty("os.name");
+        return sistema;
+    }
+
 
 
     public static void main (String[] args) {
@@ -61,7 +66,8 @@ public class InformeSistema {
                 "\n Total reservada " + InformeSistema.actualizaciones() +
                 "\n Libre: " + InformeSistema.mLibre() +
                 "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
-                "\n Máxima (-Xmx): " + InformeSistema.max()
+                "\n Máxima (-Xmx): " + InformeSistema.max() +
+                "\n" + InformeSistema.sOperativo()
         );
 
     }
