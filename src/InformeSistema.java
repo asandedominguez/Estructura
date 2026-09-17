@@ -1,4 +1,7 @@
+import java.io.File;
 import java.lang.Runtime;
+import java.util.*;
+
 public class InformeSistema {
     public static int nProcesadores (){
         int procesadores = Runtime.getRuntime().availableProcessors();
@@ -49,6 +52,40 @@ public class InformeSistema {
         return sistema;
     }
 
+    public static String sSeparador() {
+        String separador = System.getProperty("file.separator");
+        return separador;
+    }
+
+    public static String Rruta() {
+        String ruta = System.getProperty("user.home");
+        return ruta + sSeparador() + "psp" + sSeparador() + "informe.txt" ;
+
+    }
+
+    public static void pPrefijo(String[] pre) {
+        String[] prefijos;
+        if (pre.length <= 0) {
+            prefijos = new String[]{"os.", "user.", "java.version"};
+        } else {
+            prefijos = pre;
+        }
+        Properties propiedades = System.getProperties();
+        Set<String> nombres = propiedades.stringPropertyNames();
+        List<String> resultado = new java.util.ArrayList<>();
+        for (String nombre : nombres) {
+            for (String prefijo : prefijos) {
+                if (nombre.startsWith(prefijo)) {
+                    resultado.add(nombre);
+                    break;
+                }
+            }
+        }
+        resultado.sort(null);
+        for (String nombre : resultado) {
+            System.out.println(nombre + propiedades.getProperty(nombre));
+        }
+    }
 
 
     public static void main (String[] args) {
@@ -63,12 +100,24 @@ public class InformeSistema {
                 "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
                 "\n Máxima (-Xmx): " + InformeSistema.max() +
                 "\n \n MEMORIA DESPUÉS DE RESERVAR 64 MIB" + "\n " +
+                "===========================" +
                 "\n Total reservada " + InformeSistema.actualizaciones() +
                 "\n Libre: " + InformeSistema.mLibre() +
                 "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
                 "\n Máxima (-Xmx): " + InformeSistema.max() +
-                "\n" + InformeSistema.sOperativo()
+                "\n Incremento en uso: " + InformeSistema.actualizaciones() +
+                "\n" +
+                "\n SISTEMA" +
+                "\n  ===========================" +
+                "\n os.name: " + InformeSistema.sOperativo() +
+                "\n file.separator: " + " '' " + InformeSistema.sSeparador() + " '' " +
+                "\n Ruta construida con las propiedades: " +
+                "\n " + InformeSistema.Rruta() +
+                "\n"
         );
+        System.out.println("\n PROPIEDADES FILTRADAS Y ORDENADAS");
+        System.out.println(" ===========================");
+        InformeSistema.pPrefijo(args);
 
     }
 }
