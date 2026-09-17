@@ -71,9 +71,8 @@ public class InformeSistema {
             prefijos = pre;
         }
         Properties propiedades = System.getProperties();
-        Set<String> nombres = propiedades.stringPropertyNames();
         List<String> resultado = new java.util.ArrayList<>();
-        for (String nombre : nombres) {
+        for (String nombre : propiedades.stringPropertyNames()) {
             for (String prefijo : prefijos) {
                 if (nombre.startsWith(prefijo)) {
                     resultado.add(nombre);
@@ -86,7 +85,6 @@ public class InformeSistema {
             System.out.println(nombre + propiedades.getProperty(nombre));
         }
     }
-
 
     public static void main (String[] args) {
         System.out.println("PROCESADORES " +
@@ -118,6 +116,12 @@ public class InformeSistema {
         System.out.println("\n PROPIEDADES FILTRADAS Y ORDENADAS");
         System.out.println(" ===========================");
         InformeSistema.pPrefijo(args);
+        System.out.println("PROCESO EN ESPERA" +
+                "\n  ===========================" +
+                "\n Pulsa  INTRO para terminar...");
+        java.util.Scanner teclado = new java.util.Scanner(System.in);
+        teclado.nextLine();
+        System.out.println("Fin del programa.");
 
     }
 }
