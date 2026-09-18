@@ -102,7 +102,7 @@ public class InformeSistema {
                 "\n Libre: " + InformeSistema.mLibre() + "MiB" +
                 "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" + "MiB" +
                 "\n Máxima (-Xmx): " + InformeSistema.max() + "MiB" +
-                "\n Incremento en uso: " + InformeSistema.actualizaciones() +
+                "\n Incremento en uso: " + InformeSistema.actualizaciones() + "Mib" +
                 "\n (el array sigue en memoria: reservado[0] = 0)" +
                 "\n \nSISTEMA" +
                 "\n===========================" +
