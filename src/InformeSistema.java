@@ -87,37 +87,38 @@ public class InformeSistema {
     }
 
     public static void main (String[] args) {
-        System.out.println("PROCESADORES " +
-                "\n =========================== " +
+        System.out.println("PROCESADORES "+"\n=========================== " +
                 "\n Disponibles JVM: " + InformeSistema.nProcesadores() +
                 "\n (Son hilos lógicos: Con SMT no coinciden con los núcleos físicos)" +
-                "\n \n MEMORIA  ANTES" +
-                "\n ===========================" +
-                "\n Total reservada " + InformeSistema.mTotal() +
-                "\n Libre: " + InformeSistema.mLibre() +
-                "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
-                "\n Máxima (-Xmx): " + InformeSistema.max() +
-                "\n \n MEMORIA DESPUÉS DE RESERVAR 64 MIB" + "\n " +
+                "\n \nMEMORIA  ANTES" +
+                "\n===========================" +
+                "\n Total reservada " + InformeSistema.mTotal() + "MiB" +
+                "\n Libre: " + InformeSistema.mLibre() + "MiB" +
+                "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" + "MiB" +
+                "\n Máxima (-Xmx): " + InformeSistema.max() + "MiB" +
+                "\n \nMEMORIA DESPUÉS DE RESERVAR 64 MIB" + "\n " +
                 "===========================" +
-                "\n Total reservada " + InformeSistema.actualizaciones() +
-                "\n Libre: " + InformeSistema.mLibre() +
-                "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" +
-                "\n Máxima (-Xmx): " + InformeSistema.max() +
+                "\n Total reservada " + InformeSistema.actualizaciones() + "MiB" +
+                "\n Libre: " + InformeSistema.mLibre() + "MiB" +
+                "\n En uso: " + InformeSistema.mUso() + " (" + mPorcentaje() + " % de la total)" + "MiB" +
+                "\n Máxima (-Xmx): " + InformeSistema.max() + "MiB" +
                 "\n Incremento en uso: " + InformeSistema.actualizaciones() +
-                "\n" +
-                "\n SISTEMA" +
-                "\n  ===========================" +
+                "\n (el array sigue en memoria: reservado[0] = 0)" +
+                "\n \nSISTEMA" +
+                "\n===========================" +
                 "\n os.name: " + InformeSistema.sOperativo() +
                 "\n file.separator: " + " '' " + InformeSistema.sSeparador() + " '' " +
                 "\n Ruta construida con las propiedades: " +
-                "\n " + InformeSistema.Rruta() +
-                "\n"
+                "\n " + InformeSistema.Rruta()
+
         );
-        System.out.println("\n PROPIEDADES FILTRADAS Y ORDENADAS");
-        System.out.println(" ===========================");
+        System.out.println("\nPROPIEDADES FILTRADAS Y ORDENADAS os., user., java.version");
+        System.out.println("===========================");
         InformeSistema.pPrefijo(args);
-        System.out.println("PROCESO EN ESPERA" +
-                "\n  ===========================" +
+        System.out.println(" \nPROCESO EN ESPERA" +
+                "\n===========================" +
+                "\n Buscame desde otra terminal con: " +
+                "\n ps -ef | grep InformeSistema" +
                 "\n Pulsa  INTRO para terminar...");
         java.util.Scanner teclado = new java.util.Scanner(System.in);
         teclado.nextLine();
