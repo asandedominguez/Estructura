@@ -58,7 +58,7 @@ Coincide en Programación paralela y Programación concurrente.
 
 Paralela: Al tener 8 nucleos puede procesar 8 peticiones al mismo tiempo.
 
-Concurrente: Va intercalando el tiempo en CPU entre los distintos núcleos
+Concurrente: Va intercalando el tiempo en CPU.
 
 ● b) Renderizar una película de animación en un plazo de tres meses.
 
